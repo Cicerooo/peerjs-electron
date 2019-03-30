@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Host</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="basics.js"></script>
+    <script src="host.js"></script>
+</head>
+<body>
+    <div class="resize-fix no-drag"></div>
+    <nav class="titlebar">
+        <a href="index.html" class="page-title">Host</a>
+        <ul class="titlebar-buttons">
+            <li id="minimize" class="material-icons">remove</li>
+            <li id="maximize" class="material-icons">crop_square</li>
+            <li id="close" class="material-icons">close</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="id-title">Your ID:</h1>
+        <input id="id-input" class="id-input" type="text" readonly>
+        <div class="button-cont">
+            <button id="copy-id" class="button">Copy ID</button>
+            <button id="generate-id" class="button">Generate</button>
+        </div>
+        <h2>Status:</h2>
+        <h2 id="connection-status">No Connection</h2>
+        <a href="index.html" id="back" class="button">back</a>
+        <h2>Connections:</h2>
+        <div id="connection-list" class="connection-list">
+            <span>no one connected</span>
+        </div>
+    </div>
+</body>
+</html>

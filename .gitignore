@@ -1,0 +1,12 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+google-api.key
+
+/node_modules
+*/node_modules

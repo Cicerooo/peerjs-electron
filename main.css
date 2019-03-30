@@ -1,0 +1,142 @@
+body{
+    font-family: "Roboto",sans-serif;
+    background-color: #282a2e;
+}
+
+.container{
+    position: relative;
+    color: #ffffff;
+    width: 380px;
+    margin: 0px auto;
+    margin-top: 30px;
+    text-align: center;
+}
+.container #back.button{
+    text-decoration: none;
+    color: #ffffff;
+    margin: 10px;
+    display: inline-block;
+    padding: 3px 6px;
+    font-size: 14px;
+}
+.container h1{
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    right: 0px;
+    margin: auto auto;
+}
+.container .connection-list{
+    border-top: 1px solid #ccc;
+    width: 200px;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+.container .connection-list span{
+    font-size: 14px;
+}
+.container h2{
+    margin: 5px 0px;
+}
+.container .id-input{
+    position: absolute;
+    top: 30px;
+    height: 16px;
+    width: 150px;
+    left: 0px;
+    right: 0px;
+    margin: auto auto;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #282a2e;
+    padding: 0px 4px;
+    color: #ffffff;
+    text-align: center;
+}
+.container .id-input:hover{
+    border-color: #ffffff;
+}
+.button{
+    color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #282a2e;
+    text-align: center;
+}
+.button:hover{
+    cursor: pointer;
+    border-color: #ffffff;
+}
+.container .button-cont{
+    padding-top: 60px;
+    margin-bottom: 10px;
+}
+.container .button-host-cont{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.container .button-host-cont .button.first{
+    border-bottom: 1px solid #ccc;
+}
+.container .button-host-cont .button{
+    display: block;
+    width: 100%;
+    line-height: 3;
+    border: none;
+    text-decoration: none;
+}
+.container .button-host-cont .button:hover{
+    background-color: #373a3f;
+}
+.resize-fix{
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    top: 0px;
+    -webkit-app-region: no-drag;
+}
+.no-drag{
+    -webkit-app-region: no-drag;
+}
+.titlebar{
+    position: relative;
+    -webkit-app-region: drag;
+    background-color: #000000;
+    height: 30px;
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+    color: #ffffff;
+}
+.titlebar .page-title{
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 2.3;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.titlebar .titlebar-buttons{
+    line-height: 2.5;
+    float: right;
+    margin-right: 5px;
+}
+.titlebar .titlebar-buttons li{
+    font-size: 20px;
+    margin-left: 8px;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+.titlebar .titlebar-buttons li:hover{
+    color: #58a3ff;
+}
+.titlebar .titlebar-buttons li:active{
+    color: #5294e2;
+}
+.titlebar .titlebar-buttons #close:hover{
+    color: #ff5858;
+}
+.titlebar .titlebar-buttons #close:active{
+    color: #e25252;
+}
