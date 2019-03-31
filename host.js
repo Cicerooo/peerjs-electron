@@ -1,6 +1,7 @@
 const {clipboard} = require("electron");
 
 var host = new Peer({key: 'lwjd5qra8257b9'});
+var conn;
 var idInfo;
 var status;
 var copyId;
@@ -16,7 +17,12 @@ function startHost(){
         host.on('connection',function(dataConnection){
             console.log("connected to "+dataConnection.peer+" .open:" + dataConnection.open+ " .reliable:"+dataConnection.reliable);
             document.getElementById("connection-status").innerHTML = "Connected";
+            conn = dataConnection;
+            dataConnection.on('data',function(data){
+                console.log("got data: "+data);
+            });
         });
+
         host.on('disconnected',function(){
             console.log("lost connection");
             document.getElementById("connection-status").innerHTML = "Lost connection";
@@ -28,12 +34,8 @@ function startHost(){
     });
 }
 function listConnections(){
-    connList.innerHTML = "";
-    
-    console.log(host.connections);
-    for(var i=0;i<host.connections.length;i++){
-        connList.innerHTML += "<span>"+host.connections[i]+" ("+host.connections[i]._peerBrowser+")"+"</span> "
-    }
+    connList.innerHTML = "connected to" + host.connections.length;
+
 }
 
 function setHostVariables(){

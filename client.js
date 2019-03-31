@@ -37,7 +37,8 @@ function addPeerListeners(){
             console.log("received "+data);
         });
         conn.on("open",function(dataConnection){
-            status.innerHTML = "connected";
+            console.log("connected");
+            document.getElementById("connection-status").innerHTML = 'Connected';
         })
         conn.send("test");
     });
