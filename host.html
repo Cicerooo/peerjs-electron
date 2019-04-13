@@ -23,19 +23,36 @@
             <li id="close" class="material-icons">close</li>
         </ul>
     </nav>
+    <div id="references" class="hidden">
+            <div class="message">
+                <p class="message-sender">user</p>
+                <p class="message-text">This is placeholder text</p>
+            </div>
+    </div>
     <div class="container">
-        <h1 class="id-title">Your ID:</h1>
-        <input id="id-input" class="id-input" type="text" readonly>
-        <div class="button-cont">
-            <button id="copy-id" class="button">Copy ID</button>
-            <button id="generate-id" class="button">Generate</button>
+        <div id="connection-panel">
+            <h1 class="id-title">Your ID:</h1>
+            <input id="id-input" class="id-input" type="text" readonly>
+            <div class="button-cont">
+                <button id="copy-id" class="button">Copy ID</button>
+                <button id="generate-id" class="button">Generate</button>
+            </div>
+            <h2>Status:</h2>
+            <h2 id="connection-status">No Connection</h2>
+            <a href="index.html" id="back" class="button">back</a>
+            <h2>Connections:</h2>
+            <div id="connection-list" class="connection-list">
+                <span>no one connected</span>
+            </div>
         </div>
-        <h2>Status:</h2>
-        <h2 id="connection-status">No Connection</h2>
-        <a href="index.html" id="back" class="button">back</a>
-        <h2>Connections:</h2>
-        <div id="connection-list" class="connection-list">
-            <span>no one connected</span>
+        <div id="messaging-panel" class="messaging hidden">
+            <button id="disconnect" class="button">Disconnect</button>
+            <div class="messages" id="messages">
+            </div>
+            <div class="send-message">
+                <input id="message" class="message-input" type="text">
+                <button id="send" class="button">send</button>
+            </div>
         </div>
     </div>
 </body>

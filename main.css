@@ -1,9 +1,14 @@
 body{
     font-family: "Roboto",sans-serif;
     background-color: #282a2e;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container{
+    height: 100%;
+    flex: 1;
     position: relative;
     color: #ffffff;
     width: 380px;
@@ -68,6 +73,7 @@ body{
     border-color: #ffffff;
 }
 .container .button-cont{
+    
     padding-top: 60px;
     margin-bottom: 10px;
 }
@@ -99,6 +105,58 @@ body{
 }
 .no-drag{
     -webkit-app-region: no-drag;
+}
+.messaging{
+    margin: 0px auto;
+    width: 100%;
+    flex: 1;
+    min-height: 100%;
+}
+
+.messaging #disconnect{
+
+    text-align: center;
+}
+.messaging .send-message{
+
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+.messaging .send-message .message-input{
+    color: #ffffff;
+    width: 85%;
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #282a2e;
+}
+.messaging .send-message button{
+    width: 13%;
+}
+
+.messaging .messages{
+    padding-top: 15px;
+    width: 100%;
+    height: 400px;
+    flex: 1;
+    overflow-y: auto;
+}
+.messaging .message{
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 7px 5px;
+    border-radius: 3px;
+}
+.messaging .message p{
+    text-align: left;
+}
+.messaging .message .message-sender{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.messaging .message .message-text{
+    font-size: 14px;
+    padding-left: 5px;
 }
 .titlebar{
     position: relative;
@@ -139,4 +197,57 @@ body{
 }
 .titlebar .titlebar-buttons #close:active{
     color: #e25252;
+}
+.hidden{
+    display: none !important;
+}
+@media(min-height:550px){
+    .messaging .messages{
+        height: 420px;
+    }
+}
+@media(min-height:600px){
+    .messaging .messages{
+        height: 470px;
+    }
+}
+@media(min-height:650px){
+    .messaging .messages{
+        height: 520px;
+    }
+}
+@media(min-height:700px){
+    .messaging .messages{
+        height: 570px;
+    }
+}
+@media(min-height:750px){
+    .messaging .messages{
+        height: 620px;
+    }
+}
+@media(min-height:800px){
+    .messaging .messages{
+        height: 670px;
+    }
+}
+@media(min-height:850px){
+    .messaging .messages{
+        height: 720px;
+    }
+}
+@media(min-height:900px){
+    .messaging .messages{
+        height: 770px;
+    }
+}
+@media(min-height:950px){
+    .messaging .messages{
+        height: 820px;
+    }
+}
+@media(min-height:1000px){
+    .messaging .messages{
+        height: 870px;
+    }
 }
