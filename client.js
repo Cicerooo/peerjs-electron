@@ -28,8 +28,8 @@ function addMessage(name, text){
     message.getElementsByClassName("message-text")[0].innerHTML = text;
     messageCont.appendChild(message);
 }
-function sendMessage(){
-    var text = document.getElementById("message").value;
+function sendMessage(text){
+    
     if(text != ""){
         document.getElementById("message").value = "";
         conn.send(text);
@@ -60,15 +60,21 @@ function addPeerListeners(){
             document.getElementById("connection-panel").classList.add("hidden");
             document.getElementById("messaging-panel").classList.remove("hidden");
             document.getElementById("disconnect").addEventListener("click",function(){
+                sendMessage("$Server: disconnected");
                 window.reload();
             });
             document.getElementById("message").addEventListener("keydown",function(e){
-                if(e.key==="Enter")
-                    sendMessage();
+                
+                if(e.key==="Enter"){
+                    var text = document.getElementById("message").value;
+                    sendMessage(text);
+                }
             });
             document.getElementById("send").addEventListener("click",function(){
-                sendMessage();
+                var text = document.getElementById("message").value;
+                sendMessage(text);
             });
+            sendMessage("$Server: Connected");
         });
     });
     pasteId.addEventListener("click",function(){

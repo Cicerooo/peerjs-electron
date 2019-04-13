@@ -79,6 +79,7 @@ function addPeerListeners(){
         clipboard.writeText(idInfo.value);
     });
     document.getElementById("disconnect").addEventListener("click",function(){
+        sendMessage("$Server: disconnected");
         window.reload();
     });
 }
