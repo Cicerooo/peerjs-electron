@@ -1,21 +1,21 @@
-const {clipboard} = require("electron");
-
-var host = new Peer({key: 'lwjd5qra8257b9'});
-var conn;
-var idInfo;
-var status;
-var copyId;
-var genId;
-var connList;
+//const {Peer} = require("peerjs");
+const host = new Peer();
+//const host = new Peer();
+let conn;
+let idInfo;
+let connStatus;
+let copyId;
+let genId;
+let connList;
 
 function addMessage(name, text){
-    var message = document.getElementsByClassName("message")[0].cloneNode(true);
+    let message = document.getElementsByClassName("message")[0].cloneNode(true);
     message.getElementsByClassName("message-sender")[0].innerHTML = name;
     message.getElementsByClassName("message-text")[0].innerHTML = text;
     document.getElementById("messages").appendChild(message);
 }
 function sendMessage(){
-    var text = document.getElementById("message").value;
+    let text = document.getElementById("message").value;
     if(text != ""){
         document.getElementById("message").value = "";
         conn.send(text);
@@ -24,7 +24,7 @@ function sendMessage(){
 }
 function startHost(){
     host.on('open', function(id) {
-        console.log('My peer ID is: ' + id + " running on "+util.browser);
+        console.log('My peer ID is: ' + id);
         idInfo.value = id;
         host.on('data', function(data) {
             console.log('Received', data);
@@ -63,24 +63,26 @@ function listConnections(){
 }
 
 function setHostVariables(){
-    status = document.getElementById("connection-status");
+    connStatus = document.getElementById("connection-status");
     copyId = document.getElementById("copy-id");
     genId = document.getElementById("generate-id");
     idInfo = document.getElementById("id-input");
     connList = document.getElementById("connection-list");
 }
 function addPeerListeners(){
-    var window = remote.getCurrentWindow();
+    
+    
     genId.addEventListener("click",function(){ 
-        window.reload();
+        window.electronAPI.reloadPage();
     });
     copyId.addEventListener("click",function(){
         if(idInfo.value!='')
-        clipboard.writeText(idInfo.value);
+        console.log(idInfo.value);
+        window.electronAPI.copyText(idInfo.value);
     });
     document.getElementById("disconnect").addEventListener("click",function(){
         sendMessage("$Server: disconnected");
-        window.reload();
+        window.electronAPI.reloadPage();
     });
 }
 

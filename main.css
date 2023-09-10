@@ -179,6 +179,7 @@ body{
     line-height: 2.5;
     float: right;
     margin-right: 5px;
+    -webkit-app-region: no-drag;
 }
 .titlebar .titlebar-buttons li{
     font-size: 20px;
@@ -192,11 +193,19 @@ body{
 .titlebar .titlebar-buttons li:active{
     color: #5294e2;
 }
+
+.titlebar .titlebar-buttons #maximize:hover{
+    color: #ffff00;
+    
+}
+.titlebar .titlebar-buttons #maximize:active{
+    color: #c0c000;
+}
 .titlebar .titlebar-buttons #close:hover{
     color: #ff5858;
 }
 .titlebar .titlebar-buttons #close:active{
-    color: #e25252;
+    color: #bd4444;
 }
 .hidden{
     display: none !important;
