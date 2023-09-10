@@ -1,15 +1,16 @@
-const {clipboard} = require("electron");
+//const Peer = require("peer")
+//let peer = new Peer({key: 'lwjd5qra8257b9'});
+let peer = new Peer();
+let conn;
+let inputId;
+let connStatus;
+let pasteId;
+let connectBtn;
+let messageCont;
 
-var peer = new Peer({key: 'lwjd5qra8257b9'});
-var conn;
-var inputId;
-var status;
-var pasteId;
-var connectBtn;
-var messageCont;
 function startPeer(){
     peer.on('open', function(id) {
-        console.log('My peer ID is: ' + id + " running on "+util.browser);
+        console.log('My peer ID is: ' + id);
         peer.on('connection',function(dataConnection){
             console.log("connected to "+dataConnection.peer);
             document.getElementById("connection-status").innerHTML = "Connected to "+dataConnection.peer;
@@ -23,7 +24,7 @@ function startPeer(){
     });
 }
 function addMessage(name, text){
-    var message = document.getElementsByClassName("message")[0].cloneNode(true);
+    let message = document.getElementsByClassName("message")[0].cloneNode(true);
     message.getElementsByClassName("message-sender")[0].innerHTML = name;
     message.getElementsByClassName("message-text")[0].innerHTML = text;
     messageCont.appendChild(message);
@@ -33,12 +34,12 @@ function sendMessage(text){
     if(text != ""){
         document.getElementById("message").value = "";
         conn.send(text);
-        addMessage("you",text);
+        addMessage("you:",text);
     }
 
 }
 function setPeerVariables(){
-    status = document.getElementById("connection-status");
+    connStatus = document.getElementById("connection-status");
     pasteId = document.getElementById("paste-id");
     connectBtn = document.getElementById("connect");
     disconnectBtn = document.getElementById("disconnect");
@@ -46,41 +47,47 @@ function setPeerVariables(){
     messageCont = document.getElementById("messages");
 }
 function addPeerListeners(){
-    var window = remote.getCurrentWindow();
+    //let window = remote.getCurrentWindow();
     connectBtn.addEventListener("click",function(){ 
-        if(inputId.value!='')
-        conn = peer.connect(inputId.value);
-        conn.on("data",function(data){
+        if(inputId.value!='') {
+            console.log('Connecting to peer..');
+            conn = peer.connect(inputId.value);
+        
+        
+        conn.on("open",function(dataConnection){
+            console.log("connected");
+            conn.on("data",function(data){
             console.log("received "+data);
             addMessage("them",data);
         });
-        conn.on("open",function(dataConnection){
-            console.log("connected");
             document.getElementById("connection-status").innerHTML = 'Connected';
             document.getElementById("connection-panel").classList.add("hidden");
             document.getElementById("messaging-panel").classList.remove("hidden");
             document.getElementById("disconnect").addEventListener("click",function(){
                 sendMessage("$Server: disconnected");
-                window.reload();
+                window.electronAPI.reloadPage();
             });
             document.getElementById("message").addEventListener("keydown",function(e){
                 
                 if(e.key==="Enter"){
-                    var text = document.getElementById("message").value;
+                    let text = document.getElementById("message").value;
                     sendMessage(text);
                 }
             });
             document.getElementById("send").addEventListener("click",function(){
-                var text = document.getElementById("message").value;
+                let text = document.getElementById("message").value;
                 sendMessage(text);
             });
             sendMessage("$Server: Connected");
         });
+    }
     });
-    pasteId.addEventListener("click",function(){
-        inputId.value = clipboard.readText();
+    pasteId.addEventListener("click",async function(){
+        let pastedValue = await window.electronAPI.pasteText();
+        inputId.value = pastedValue;
     });
 }
+
 
 function startServer(){
     setPeerVariables();
